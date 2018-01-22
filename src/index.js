@@ -1,6 +1,10 @@
-import sum from './sum'
-import './image_viewer';
+const button = document.createElement('button');
+button.innerText = 'Click Me';
 
-const total = sum(1,3);
-console.log(total);
+button.onclick = () => {
+    // gets the  module image_viewer (with its dependencies) from server
+    // This is async. so it returns a promise
+    System.import('./image_viewer').then(module => module.default());
+}
 
+document.body.appendChild(button);
